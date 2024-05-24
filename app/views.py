@@ -137,33 +137,3 @@ def update_book(id):
         </tr>
         """
     return response
-
-
-@app.route("/update/<int:id>", methods=["PUT"])
-def update_book(id):
-    db.session.query(Book).filter(Book.book_id == id).update(
-        {"title": request.form["title"]}
-    )
-    db.session.commit()
-    title = request.form["title"]
-    book = Book.query.get(id)
-    author = Author.query.get(book.author_id)
-    response = f"""
-        <tr>
-            <td>{title}</td>
-            <td>{author.name}</td>
-            <td>
-                <button class="btn btn-primary"
-                    hx-get="/get-edit-form/{id}">
-                    Editar Título
-                </button>
-            </td>
-            <td>
-                <button hx-delete="/delete/{id}"
-                    class="btn btn-primary">
-                    Eliminar
-                </button>
-            </td>
-        </tr>
-        """
-    return response

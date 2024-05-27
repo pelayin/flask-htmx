@@ -38,17 +38,11 @@ def submit():
             <tr>
                 <td>{title}</td>
                 <td>{author_name}</td>
-                <td>
-                    <button class="btn btn-primary"
-                        hx-get="/get-edit-form/{global_book_object.book_id}">
-                        Edit Title
-                    </button>
+                <td class="text-center">
+                    <button class="btn btn-info" hx-get="/get-edit-form/{global_book_object.book_id}">Editar</button>
                 </td>
-                <td>
-                    <button hx-delete="/delete/{global_book_object.book_id}"
-                        class="btn btn-primary">
-                        Delete
-                    </button>
+                <td class="text-center">
+                    <button class="btn btn-danger" hx-delete="/delete/{global_book_object.book_id}" >Eliminar</button>
                 </td>
             </tr>
             """
@@ -75,7 +69,7 @@ def get_edit_form(id):
                 <button class="btn btn-primary" hx-get="/get-book-row/{id}">
                     Cancelar
                 </button>
-                <button class="btn btn-primary" hx-put="/update/{id}" hx-include="closest tr">
+                <button class="btn btn-success" hx-put="/update/{id}" hx-include="closest tr">
                     Grabar
                 </button>
             </td>
@@ -95,7 +89,7 @@ def get_book_row(id):
             <td>
                 <button class="btn btn-primary"
                     hx-get="/get-edit-form/{id}">
-                    Editar Titulo
+                    Editar
                 </button>
             </td>
             <td>
@@ -125,13 +119,13 @@ def update_book(id):
             <td>
                 <button class="btn btn-primary"
                     hx-get="/get-edit-form/{id}">
-                    Edit Title
+                    Editar
                 </button>
             </td>
             <td>
                 <button hx-delete="/delete/{id}"
-                    class="btn btn-primary">
-                    Delete
+                    class="btn btn-danger">
+                    Eliminar
                 </button>
             </td>
         </tr>
